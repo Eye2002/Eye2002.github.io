@@ -1,0 +1,103 @@
+
+
+
+function Mode() {
+  document.body.classList.toggle("dark-mode");
+  const btn = document.querySelector(".ModeD");
+
+  if (document.body.classList.contains("dark-mode")) {
+    btn.textContent = "☀️";
+  } else {
+    btn.textContent = "🌙";
+  }
+}
+
+   let mybutton = document.getElementById("scrollTopBtn");
+
+    // Show the button when user scrolls down 100px
+    window.onscroll = function() {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        mybutton.classList.add("show");
+      } else {
+        mybutton.classList.remove("show");
+      }
+    };
+
+    // When clicked, scroll to top smoothly
+    function topFunction() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+
+
+
+
+    //scrolll show / hide
+
+        const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show-text');
+        } else {
+          entry.target.classList.remove('show-text'); 
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.hidden-text').forEach((el) => observer.observe(el));
+
+// pop slide 
+    const popObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show-pop');
+      } else {
+        entry.target.classList.remove('show-pop'); // hide again when out of view
+      }
+    });
+  }, { threshold: 0.2 });
+
+  // Apply observer only to .hidden-pop
+  document.querySelectorAll('.hidden-pop').forEach((el) => popObserver.observe(el));
+
+
+ // Intersection Observer for soft effect
+  const softObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show-soft');
+      } else {
+        entry.target.classList.remove('show-soft');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  // Target all elements with .hidden-soft
+  document.querySelectorAll('.hidden-soft').forEach((el) => softObserver.observe(el));
+
+
+  const leftObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show-left');
+      } else {
+        entry.target.classList.remove('show-left');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.hidden-left').forEach((el) => leftObserver.observe(el));
+
+
+  // Observer for RIGHT slide
+  const rightObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show-right');
+      } else {
+        entry.target.classList.remove('show-right');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  
+  document.querySelectorAll('.hidden-right').forEach((el) => rightObserver.observe(el));
