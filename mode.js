@@ -101,3 +101,25 @@ function Mode() {
 
   
   document.querySelectorAll('.hidden-right').forEach((el) => rightObserver.observe(el));
+
+
+document.querySelector('.email-btn').addEventListener('click', function() {
+  const email = "Castanedajay90@gmail.com";
+  navigator.clipboard.writeText(email).then(function() {
+  Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Email address copied to clipboard!",
+  showConfirmButton: false,
+  timer: 1500
+    });
+  }, function(err) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Failed to copy email.'
+    });
+  });
+});
+
+
